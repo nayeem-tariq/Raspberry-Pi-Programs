@@ -1,7 +1,12 @@
 import RPi.GPIO as GPIO
+from time import sleep
 GPIO.setmode(GPIO.BOARD)
 InPin=40
 GPIO.setup(InPin, GPIO.IN)
-readVal=GPIO.input(InPin)
-print(readVal)
-GPIO.cleanup()
+try:
+    while True:
+        readVal=GPIO.input(InPin)
+        print(readVal)
+        sleep(1)
+except KeyboardInterrupt:
+    GPIO.cleanup()
